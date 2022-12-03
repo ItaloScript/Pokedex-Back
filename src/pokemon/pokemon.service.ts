@@ -1,7 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import axios, { AxiosInstance } from 'axios';
-import { CreatePokemonDto } from './dto/create-pokemon.dto';
-import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 
 @Injectable()
 export class PokemonService {
@@ -12,10 +10,6 @@ export class PokemonService {
       'Accept-Encoding': 'application/json',
     }
   });
-
-  create(createPokemonDto: CreatePokemonDto) {
-    return 'This action adds a new pokemon';
-  }
 
   async findAll(offset:number = 0, limit: number=20) {
     console.log(offset, limit)
