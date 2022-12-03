@@ -13,8 +13,8 @@ export class PokemonService {
 
   async findAll(offset:number = 0, limit: number=20) {
     console.log(offset, limit)
-    const pokemons = await this.api.get(`/?limit=${limit}&offset=${offset}`)
-
+    const pokemons = await this.api.get(`pokemon/?limit=${limit}&offset=${offset}`)
+    console.log(pokemons)
     const pokemonResults = pokemons.data.results.map(async pokemon => {
       const pokemonDetailed = await this.api.get(pokemon.url)
       return ({
@@ -30,8 +30,8 @@ export class PokemonService {
   }
 
   async findOne(id: number) {
-    const pokemon = await this.api.get(`/${id}`)
-    const characteristic = await this.api.get(`/characteristic/${id}`)
+    const pokemon = (await this.api.get(`pokemon/${id}`)).data
+    const characteristic = (await this.api.get(`/characteristic/${id}`)).data
 
     if(!pokemon) {
       throw new HttpException('Pokemon not found', 404)
@@ -42,7 +42,7 @@ export class PokemonService {
     }
 
     return {
-      ...pokemon.data,
+      ...pokemon,
       characteristic
     }
   }
