@@ -12,7 +12,6 @@ export class PokemonService {
   });
 
   async findAll(offset:number = 0, limit: number=20) {
-    console.log(offset, limit)
     const pokemons = await this.api.get(`pokemon/?limit=${limit}&offset=${offset}`)
     const pokemonResults = pokemons.data.results.map(async pokemon => {
       const pokemonDetailed = await this.api.get(pokemon.url)

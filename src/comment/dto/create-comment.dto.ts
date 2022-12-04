@@ -1,14 +1,22 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsEmail, IsNumber, IsString } from "class-validator";
 
 export class CreateCommentDto {
     
     @ApiProperty( { description: 'The name of the comment', example:  'This is a comment' } ) 
     @IsString()
-    content: string;
+    comment: string;
+
+    @ApiProperty( { description: 'The Pokemon Unique ID', example:  1 } )
+    @IsNumber()
+    pokemonId: number;
 
     @ApiProperty()
     @IsString()
     name: string;
+
+    @ApiProperty()
+    @IsEmail()
+    email: string;
 
 }

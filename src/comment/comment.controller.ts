@@ -6,16 +6,17 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
-  @Post(':pokemonId')
+  @Post()
   create(
-    @Param('pokemonId') pokemonId: number,
     @Body() createCommentDto: CreateCommentDto) {
-    return this.commentService.create(+pokemonId,createCommentDto);
+    return this.commentService.create(createCommentDto);
   }
 
-  @Get()
-  findAll() {
-    return this.commentService.findAll();
+  @Get(':pokemonId')
+  findAll(
+    @Param('pokemonId') pokemonId: string,
+  ) {
+    return this.commentService.findAll(+pokemonId);
   }
 
 }
