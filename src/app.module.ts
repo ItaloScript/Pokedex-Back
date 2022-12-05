@@ -13,10 +13,7 @@ import { FirestoreModule } from './firestore/firestore.module';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         projectId: configService.get<string>('PROJECT_ID'),
-        credentials: {
-          client_email: configService.get<string>('CLIENT_EMAIL'),
-          private_key: configService.get<string>('PRIVATE_KEY'),
-        },
+        keyFilename: './firebase-admin.json'
       }),
       inject: [ConfigService],
     }),
