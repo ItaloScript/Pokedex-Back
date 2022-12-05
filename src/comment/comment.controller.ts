@@ -18,5 +18,6 @@ export class CommentController {
   ) {
     return this.commentService.findAll(+pokemonId);
   }
+  
 
 }

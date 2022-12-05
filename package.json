@@ -66,6 +66,12 @@
       "ts"
     ],
     "rootDir": ".",
+    "roots": [
+      "<rootDir>"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t)s$": "ts-jest"

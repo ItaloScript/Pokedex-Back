@@ -11,7 +11,6 @@ export class PokemonController {
     @Query('offset') offset,
     @Query('limit') limit,
   ) {
-    console.log(+offset, +limit)
     return this.pokemonService.findAll(+offset, +limit);
   }
 

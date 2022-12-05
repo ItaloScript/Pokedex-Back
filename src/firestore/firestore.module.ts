@@ -25,7 +25,6 @@ export class FirestoreModule {
         const dbProvider = {
             provide: FirestoreDatabaseProvider,
             useFactory: (config) => {
-                console.log(config);
                 return new Firestore(config);
             },
             inject: [FirestoreOptionsProvider],
