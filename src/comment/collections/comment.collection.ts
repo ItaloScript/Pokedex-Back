@@ -1,12 +1,10 @@
-import { Timestamp } from '@google-cloud/firestore';
-
 export class CommentCollection {
     
     static collectionName = 'comments';
 
-    name: string;
+    username: string;
     email: string;
-    created_at: Date
     comment: string;
     pokemonId: number;
+    created_at: Date;
 }

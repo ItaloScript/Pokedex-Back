@@ -13,7 +13,7 @@ export class CreateCommentDto {
 
     @ApiProperty()
     @IsString()
-    name: string;
+    username: string;
 
     @ApiProperty()
     @IsEmail()
