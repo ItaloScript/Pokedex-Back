@@ -12,8 +12,11 @@ import { FirestoreModule } from './firestore/firestore.module';
     FirestoreModule.forRoot({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        keyFilename: configService.get<string>('KEY_FILE_NAME'),
         projectId: configService.get<string>('PROJECT_ID'),
+        credentials: {
+          client_email: configService.get<string>('CLIENT_EMAIL'),
+          private_key: configService.get<string>('PRIVATE_KEY'),
+        }
         
       }),
       inject: [ConfigService],
