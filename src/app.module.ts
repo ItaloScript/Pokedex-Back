@@ -11,14 +11,26 @@ import { FirestoreModule } from './firestore/firestore.module';
     }),
     FirestoreModule.forRoot({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        projectId: configService.get<string>('PROJECT_ID'),
-        credentials: {
-          client_email: configService.get<string>('CLIENT_EMAIL'),
-          private_key: configService.get<string>('PRIVATE_KEY'),
-        }
-        
-      }),
+      useFactory: (configService: ConfigService) => {
+
+        console.log({
+          projectId: configService.get<string>('PROJECT_ID'),
+          credentials: {
+            client_email: configService.get<string>('CLIENT_EMAIL'),
+            private_key: configService.get<string>('PRIVATE_KEY'),
+          }
+          
+        })
+        console.log(process.env.PRIVATE_KEY)
+        return ({
+          projectId: configService.get<string>('PROJECT_ID'),
+          credentials: {
+            client_email: configService.get<string>('CLIENT_EMAIL'),
+            private_key: configService.get<string>('PRIVATE_KEY'),
+          }
+          
+        })
+      },
       inject: [ConfigService],
     }),
     PokemonModule,
